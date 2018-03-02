@@ -1,4 +1,0 @@
-Manifest-Version: 1.0
-Bundle-SymbolicName: mx.infotec.dads.kukulkan.ide
-Main-Class: org.eclipse.xtext.ide.server.ServerLauncher
-

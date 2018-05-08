@@ -99,12 +99,10 @@ DateFieldType:
  *
  */
 DateTypes:
-	DATE
-	| LOCAL_DATE
-	| ZONED_DATETIME
-	| INSTANT;
+/*DATE
+	|*/ LOCAL_DATE | ZONED_DATETIME | INSTANT;
 
-	/**
+/**
  * Blob Field Type Rule
  *
  */
@@ -116,29 +114,19 @@ BlobFieldType:
  *
  */
 BlobTypes:
-	BLOB
-	| ANY_BLOB
-	| IMAGE_BLOB
-	| TEXT_BLOB;
+	BLOB | ANY_BLOB | IMAGE_BLOB | TEXT_BLOB;
 
 	/* =========================================================================
  * VALIDATOR
  * ========================================================================= */
 StringValidators:
-	required=RequiredValidator
-	| minLenght=MinValidator
-	| maxLenght=MaxValidator
-	| pattern=PatternValidator;
+	required=RequiredValidator | minLenght=MinValidator | maxLenght=MaxValidator | pattern=PatternValidator;
 
 NumericValidators:
-	required=RequiredValidator
-	| minValue=MinValidator
-	| maxValue=MaxValidator;
+	required=RequiredValidator | minValue=MinValidator | maxValue=MaxValidator;
 
 BlobValidators:
-	required=RequiredValidator
-	| minBytesValue=MinValidator
-	| maxBytesValue=MaxValidator;
+	required=RequiredValidator | minBytesValue=MinValidator | maxBytesValue=MaxValidator;
 
 RequiredValidator:
 	REQUIRED;
@@ -153,10 +141,7 @@ MaxValidator:
 	MAX LPAREN INT RPAREN;
 
 Cardinality:
-	ONE_TO_MANY
-	| MANY_TO_ONE
-	| ONE_TO_ONE
-	| MANY_TO_MANY;
+	ONE_TO_MANY | MANY_TO_ONE | ONE_TO_ONE | MANY_TO_MANY;
 
 	//Terminals
 terminal ENTITY_KEYWORD:
@@ -210,11 +195,12 @@ terminal BOOLEAN_TYPE:
 	/**
  * DATE Token
  *
- */
+ 
 terminal DATE:
 	'Date';
+*/
 
-	/**
+/**
  * LOCAL_DATE Token
  *
  */

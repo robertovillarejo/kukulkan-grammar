@@ -6,116 +6,115 @@ generate kukulkan "http://www.infotec.mx/dads/kukulkan/Kukulkan"
 /**
  * Domain Model Rule
  */
-DomainModel:
-	entities+=Entity+;
+domainModel:
+	entities+=entity+;
 
-	/**
+	/** 
  * Entity Rule
- *
+ *  
  */
-Entity:
+entity:
 	ENTITY_KEYWORD name=ID
 	(LPAREN tableName=ID RPAREN)?
 	(LBRACE
-	(fields+=EntityField
-	(COMMA? fields+=EntityField)*)? RBRACE)?;
+	(fields+=entityField
+	(COMMA? fields+=entityField)*)? RBRACE)?;
 
-	/**
+	/** 
  * Entity Field Rule
- *
+ *  
  */
-EntityField:
-	PrimitiveField
-	| AssociationField;
+entityField:
+	primitiveField
+	| associationField;
 
-PrimitiveField:
-	id=ID SEMICOLON type=FieldType;
-	/**
+primitiveField:
+	id=ID SEMICOLON type=fieldType;
+	/** 
  * Field Type Rule
- *
+ *  
  */
-FieldType:
-	StringFieldType
-	| NumericFieldType
-	| BooleanFieldType
-	| DateFieldType
-	| BlobFieldType;
+fieldType:
+	stringFieldType
+	| numericFieldType
+	| booleanFieldType
+	| dateFieldType
+	| blobFieldType;
 
-	/**
+	/** 
  * Entity Type Rule
- *
+ *  
  */
-AssociationField:
-	type=Cardinality id=ID SEMICOLON targetEntity=ID;
+associationField:
+	type=cardinality (LPAREN toSourcePropertyName=ID RPAREN)? id=ID SEMICOLON targetEntity=ID;
 
-	/**
+	/** 
  * String Field Type Rule
- *
+ *  
  */
-StringFieldType:
-	name=StringType constraints+=StringValidators*;
+stringFieldType:
+	name=stringType constraints+=stringValidators*;
 
-	/**
+	/** 
  * String Type Rule
- *
+ *  
  */
-StringType:
-	STRING;
+stringType:
+	STRING_KEYWORD;
 
-	/**
+	/** 
  * Numeric Field Type Rule
- *
+ *  
  */
-NumericFieldType:
-	name=NumericTypes constraints+=NumericValidators*;
+numericFieldType:
+	name=numericTypes constraints+=numericValidators*;
 
-	/**
+	/** 
  * Numeric Types Rule
- *
+ *  
  */
-NumericTypes:
+numericTypes:
 	INTEGER
 	| LONG
 	| BIG_DECIMAL
 	| FLOAT
 	| DOUBLE;
 
-	/**
+	/** 
  * Boolean Field Type Token
- *
+ *  
  */
-BooleanFieldType:
-	name=BOOLEAN_TYPE required=RequiredValidator*;
+booleanFieldType:
+	name=BOOLEAN_TYPE required=requiredValidator*;
 
-	/**
+	/** 
  * Date Field Type Rule
- *
+ *  
  */
-DateFieldType:
-	type=DateTypes required=RequiredValidator?;
+dateFieldType:
+	type=dateTypes required=requiredValidator?;
 
-	/**
+	/** 
  * Date Types Rule
- *
+ *  
  */
-DateTypes:
-	DATE
-	| LOCAL_DATE
+dateTypes:
+	LOCAL_DATE
 	| ZONED_DATETIME
 	| INSTANT;
 
-	/**
+	/** 
  * Blob Field Type Rule
- *
+ *  
  */
-BlobFieldType:
-	name=BlobTypes constraints+=BlobValidators*;
+blobFieldType:
+	name=blobTypes constraints+=blobValidators*;
 
-	/**
+	/** 
  * Blob Types Rule
- *
+ *  
  */
-BlobTypes:
+blobTypes:
 	BLOB
 	| ANY_BLOB
 	| IMAGE_BLOB
@@ -124,35 +123,35 @@ BlobTypes:
 	/* =========================================================================
  * VALIDATOR
  * ========================================================================= */
-StringValidators:
-	required=RequiredValidator
-	| minLenght=MinValidator
-	| maxLenght=MaxValidator
-	| pattern=PatternValidator;
+stringValidators:
+	required=requiredValidator
+	| minLenght=minValidator
+	| maxLenght=maxValidator
+	| pattern=patternValidator;
 
-NumericValidators:
-	required=RequiredValidator
-	| minValue=MinValidator
-	| maxValue=MaxValidator;
+numericValidators:
+	required=requiredValidator
+	| minValue=minValidator
+	| maxValue=maxValidator;
 
-BlobValidators:
-	required=RequiredValidator
-	| minBytesValue=MinValidator
-	| maxBytesValue=MaxValidator;
+blobValidators:
+	required=requiredValidator
+	| minBytesValue=minValidator
+	| maxBytesValue=maxValidator;
 
-RequiredValidator:
+requiredValidator:
 	REQUIRED;
 
-PatternValidator:
+patternValidator:
 	PATTERN LPAREN PATTERN_VALUE RPAREN;
 
-MinValidator:
+minValidator:
 	MIN LPAREN INT RPAREN;
 
-MaxValidator:
+maxValidator:
 	MAX LPAREN INT RPAREN;
 
-Cardinality:
+cardinality:
 	ONE_TO_MANY
 	| MANY_TO_ONE
 	| ONE_TO_ONE
@@ -162,153 +161,154 @@ Cardinality:
 terminal ENTITY_KEYWORD:
 	'entity';
 
-@ Override terminal STRING:
+terminal STRING_KEYWORD:
 	'String';
 
-	/**
+	/** 
  * INTEGER Token
- *
+ *  
  */
 terminal INTEGER:
 	'Integer';
 
-	/**
+	/** 
  * LONG Token
- *
+ *  
  */
 terminal LONG:
 	'Long';
 
-	/**
+	/** 
  * BIG_DECIMAL Token
- *
+ *  
  */
 terminal BIG_DECIMAL:
 	'BigDecimal';
 
-	/**
+	/** 
  * FLOAT Token
- *
+ *  
  */
 terminal FLOAT:
 	'Float';
 
-	/**
+	/** 
  * DOUBLE Token
- *
+ *  
  */
 terminal DOUBLE:
 	'Double';
 
-	/**
+	/** 
  * BOOLEAN_TYPE Token
- *
+ *  
  */
 terminal BOOLEAN_TYPE:
 	'Boolean';
 
-	/**
- * DATE Token
- *
- */
-terminal DATE:
-	'Date';
-
-	/**
+	/** 
  * LOCAL_DATE Token
- *
+ *  
  */
 terminal LOCAL_DATE:
 	'LocalDate';
 
-	/**
+	/** 
  * ZONED_DATETIME Token
- *
+ *  
  */
 terminal ZONED_DATETIME:
 	'ZonedDateTime';
 
-	/**
+	/** 
  * INSTANT Token
- *
+ *  
  */
 terminal INSTANT:
 	'Instant';
 
-	/**
+	/** 
  * BLOB Token
- *
+ *  
  */
 terminal BLOB:
 	'Blob';
 
-	/**
+	/** 
  * ANY_BLOB Token
- *
+ *  
  */
 terminal ANY_BLOB:
 	'AnyBlob';
 
-	/**
+	/** 
  * IMAGE_BLOB Token
- *
+ *  
  */
 terminal IMAGE_BLOB:
 	'ImageBlob';
 
-	/**
+	/** 
  * TEXT_BLOB Token
- *
+ *  
  */
 terminal TEXT_BLOB:
 	'TextBlob';
+
 terminal ONE_TO_MANY:
 	'OneToMany';
+
 terminal MANY_TO_ONE:
 	'ManyToOne';
+
 terminal ONE_TO_ONE:
 	'OneToOne';
+
 terminal MANY_TO_MANY:
 	'ManyToMany';
+
 terminal PATTERN_VALUE:
-	'"' (.*) '"';
-terminal MIN:
-	'min';
-terminal MAX:
-	'max';
+	'"' .*  '"'
+	;
+	terminal MIN:
+		'min';
+	terminal MAX:
+		'max';
 
-	// §3.10.7 The Null Literal
-terminal NULL_LITERAL:
-	'null';
+		// §3.10.7 The Null Literal
 
-	// §3.11 Separators
-terminal LPAREN:
-	'(';
-terminal RPAREN:
-	')';
-terminal LBRACE:
-	'{';
-terminal RBRACE:
-	'}';
-terminal LBRACK:
-	'[';
-terminal RBRACK:
-	']';
-terminal SEMI:
-	';';
-terminal COMMA:
-	',';
-terminal DOT:
-	'.';
-terminal ELLIPSIS:
-	'...';
-terminal AT:
-	'@';
-terminal COLONCOLON:
-	'::';
-terminal SEMICOLON:
-	':';
-terminal REQUIRED:
-	'required';
-terminal PATTERN:
-	'pattern';
+	terminal NULL_LITERAL:
+		'null';
+
+		// §3.11 Separators
+
+	terminal LPAREN:
+		'(';
+	terminal RPAREN:
+		')';
+	terminal LBRACE:
+		'{';
+	terminal RBRACE:
+		'}';
+	terminal LBRACK:
+		'[';
+	terminal RBRACK:
+		']';
+	terminal SEMI:
+		';';
+	terminal COMMA:
+		',';
+	terminal DOT:
+		'.';
+	terminal ELLIPSIS:
+		'...';
+	terminal AT:
+		'@';
+	terminal COLONCOLON:
+		'::';
+	terminal SEMICOLON:
+		':';
+	terminal REQUIRED:
+		'required';
+	terminal PATTERN:
+		'pattern';

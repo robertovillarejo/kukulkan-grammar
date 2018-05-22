@@ -18,7 +18,7 @@ entity:
 	(LPAREN tableName=ID RPAREN)?
 	(LBRACE
 	(fields+=entityField
-	(COMMA? fields+=entityField)*)? RBRACE)?;
+	(COMMA fields+=entityField)*)? RBRACE)?;
 
 	/** 
  * Entity Field Rule

@@ -46,7 +46,7 @@ fieldType:
  *  
  */
 associationField:
-	type=cardinality (LPAREN toSourcePropertyName=ID RPAREN)? id=ID SEMICOLON targetEntity=ID;
+	type=cardinality (LPAREN toSourcePropertyName=ID RPAREN)? id=ID SEMICOLON targetEntity=[entity];
 
 	/** 
  * String Field Type Rule
@@ -80,12 +80,12 @@ numericTypes:
 	| FLOAT
 	| DOUBLE;
 
-	/** 
+/** 
  * Boolean Field Type Token
  *  
  */
 booleanFieldType:
-	name=BOOLEAN_TYPE required=requiredValidator*;
+	name=BOOLEAN_TYPE required=requiredValidator?;
 
 	/** 
  * Date Field Type Rule

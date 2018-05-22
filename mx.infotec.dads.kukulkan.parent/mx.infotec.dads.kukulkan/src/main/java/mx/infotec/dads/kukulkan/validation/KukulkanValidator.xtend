@@ -3,6 +3,11 @@
  */
 package mx.infotec.dads.kukulkan.validation
 
+import mx.infotec.dads.kukulkan.kukulkan.KukulkanPackage
+import mx.infotec.dads.kukulkan.kukulkan.entity
+import mx.infotec.dads.kukulkan.kukulkan.domainModel
+import mx.infotec.dads.kukulkan.kukulkan.entityField
+import org.eclipse.xtext.validation.Check
 
 /**
  * This class contains custom validation rules. 
@@ -11,15 +16,48 @@ package mx.infotec.dads.kukulkan.validation
  */
 class KukulkanValidator extends AbstractKukulkanValidator {
 	
-//	public static val INVALID_NAME = 'invalidName'
-//
-//	@Check
-//	def checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.name.charAt(0))) {
-//			warning('Name should start with a capital', 
-//					KukulkanPackage.Literals.GREETING__NAME,
-//					INVALID_NAME)
-//		}
-//	}
+	@Check
+	def checkNameStartsWithUpperCase(entity entity) {
+		if (!Character.isUpperCase(entity.name.charAt(0))) {
+			warning('Name should start with a capital', KukulkanPackage.Literals.ENTITY__NAME, 'invalidName')
+		}
+	}
+	
+	@Check
+	def checkTableNameStartsWithLowerCase(entity entity) {
+		if (Character.isUpperCase(entity.tableName.charAt(0))) {
+			warning('Name should start with a lower case', KukulkanPackage.Literals.ENTITY__TABLE_NAME, 'invalidName')
+		}
+	}
+
+	@Check
+	def checkFieldNameIsUniqueInEntity(entityField field) {
+		val entity = field.eContainer as entity
+		for (otherField : entity.fields) {
+			if (otherField.id.equals(field.id) && otherField != field) {
+				error('Duplicated field name', KukulkanPackage.Literals.ENTITY_FIELD__ID, 'duplicatedFieldName')
+			}
+		}
+	}
+
+	@Check
+	def checkEntityNameIsUniqueInModel(entity entity) {
+		val domainModel = entity.eContainer as domainModel
+		for (extEntity : domainModel.entities) {
+			if (extEntity.name.equals(entity.name) && extEntity != entity) {
+				error('Duplicated entity name', KukulkanPackage.Literals.ENTITY__NAME, 'duplicatedEntityName')
+			}
+		}
+	}
+	
+	@Check
+	def checkTableNameIsUniqueInModel (entity entity) {
+		val domainModel = entity.eContainer as domainModel
+		for (otherEntity : domainModel.entities) {
+			if (otherEntity.tableName.equals(entity.tableName) && otherEntity != entity) {
+				error('Duplicated table name', KukulkanPackage.Literals.ENTITY__TABLE_NAME, 'duplicatedTableName')
+			}
+		}
+	}
 	
 }

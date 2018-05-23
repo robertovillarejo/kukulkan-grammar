@@ -30,13 +30,16 @@ class KukulkanFormattingTest {
 			expectation = 
 '''
 entity Persona {
- nombre: String
+	nombre : String
+}
+entity Alumno {
 }
 '''
 			toBeFormatted = 
 '''
-entity Persona {
-nombre: String
+entity Persona{nombre:String}
+entity Alumno{
+	
 }
 '''
 		]

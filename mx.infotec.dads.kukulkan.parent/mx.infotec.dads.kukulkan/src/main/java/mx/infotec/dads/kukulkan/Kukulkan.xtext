@@ -20,7 +20,7 @@ entity:
 	(fields+=entityField
 	(COMMA fields+=entityField)*)? RBRACE)?;
 
-	/** 
+/** 
  * Entity Field Rule
  *  
  */
@@ -80,7 +80,7 @@ numericTypes:
 	| FLOAT
 	| DOUBLE;
 
-/** 
+	/** 
  * Boolean Field Type Token
  *  
  */
@@ -268,47 +268,60 @@ terminal MANY_TO_MANY:
 	'ManyToMany';
 
 terminal PATTERN_VALUE:
-	'"' .*  '"'
-	;
-	terminal MIN:
-		'min';
-	terminal MAX:
-		'max';
+	'"' .* '"';
 
-		// §3.10.7 The Null Literal
+terminal MIN:
+	'min';
 
-	terminal NULL_LITERAL:
-		'null';
+terminal MAX:
+	'max';
 
-		// §3.11 Separators
+	// §3.10.7 The Null Literal
+terminal NULL_LITERAL:
+	'null';
 
-	terminal LPAREN:
-		'(';
-	terminal RPAREN:
-		')';
-	terminal LBRACE:
-		'{';
-	terminal RBRACE:
-		'}';
-	terminal LBRACK:
-		'[';
-	terminal RBRACK:
-		']';
-	terminal SEMI:
-		';';
-	terminal COMMA:
-		',';
-	terminal DOT:
-		'.';
-	terminal ELLIPSIS:
-		'...';
-	terminal AT:
-		'@';
-	terminal COLONCOLON:
-		'::';
-	terminal SEMICOLON:
-		':';
-	terminal REQUIRED:
-		'required';
-	terminal PATTERN:
-		'pattern';
+	// §3.11 Separators
+terminal LPAREN:
+	'(';
+
+terminal RPAREN:
+	')';
+
+terminal LBRACE:
+	'{';
+
+terminal RBRACE:
+	'}';
+
+terminal LBRACK:
+	'[';
+
+terminal RBRACK:
+	']';
+
+terminal SEMI:
+	';';
+
+terminal COMMA:
+	',';
+
+terminal DOT:
+	'.';
+
+terminal ELLIPSIS:
+	'...';
+
+terminal AT:
+	'@';
+
+terminal COLONCOLON:
+	'::';
+
+terminal SEMICOLON:
+	':';
+
+terminal REQUIRED:
+	'required';
+
+terminal PATTERN:
+	'pattern';

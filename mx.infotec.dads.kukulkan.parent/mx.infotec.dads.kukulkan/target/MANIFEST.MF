@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: mx.infotec.dads.kukulkan; singleton:=true
+Export-Package: mx.infotec.dads.kukulkan,mx.infotec.dads.kukulkan.kuku
+ lkan.impl,mx.infotec.dads.kukulkan.parser.antlr.internal,mx.infotec.d
+ ads.kukulkan.services,mx.infotec.dads.kukulkan.validation,mx.infotec.
+ dads.kukulkan.kukulkan,mx.infotec.dads.kukulkan.parser.antlr,mx.infot
+ ec.dads.kukulkan.scoping,mx.infotec.dads.kukulkan.serializer,mx.infot
+ ec.dads.kukulkan.generator,mx.infotec.dads.kukulkan.kukulkan.util,mx.
+ infotec.dads.kukulkan.formatting2
+Bundle-Name: mx.infotec.dads.kukulkan
+Bundle-Version: 1.0.0.201805252233
+Require-Bundle: org.eclipse.xtext,org.eclipse.xtext.xbase,org.eclipse.
+ equinox.common;bundle-version="3.5.0",org.eclipse.emf.ecore,org.eclip
+ se.xtext.xbase.lib;bundle-version="2.13.0",org.antlr.runtime,org.ecli
+ pse.xtext.util,org.eclipse.emf.common,org.eclipse.xtend.lib;bundle-ve
+ rsion="2.13.0"
+Bundle-ManifestVersion: 2
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Vendor: My Company
+Import-Package: org.apache.log4j
+

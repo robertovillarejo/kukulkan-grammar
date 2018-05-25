@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?artifactRepository version='1.1.0'?>
+<artifacts size='1'>
+  <artifact classifier='osgi.bundle' id='mx.infotec.dads.kukulkan.ui' version='1.0.0.201805252233'>
+    <properties size='5'>
+      <property name='artifact.size' value='19946'/>
+      <property name='download.size' value='19946'/>
+      <property name='maven-groupId' value='mx.infotec.dads.kukulkan'/>
+      <property name='maven-artifactId' value='mx.infotec.dads.kukulkan.ui'/>
+      <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+    </properties>
+  </artifact>
+</artifacts>

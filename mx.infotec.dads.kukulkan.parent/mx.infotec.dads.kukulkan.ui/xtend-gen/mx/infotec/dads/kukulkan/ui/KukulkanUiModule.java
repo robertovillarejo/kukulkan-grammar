@@ -13,7 +13,7 @@ import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor;
 @FinalFieldsConstructor
 @SuppressWarnings("all")
 public class KukulkanUiModule extends AbstractKukulkanUiModule {
-  public KukulkanUiModule(final AbstractUIPlugin plugin) {
-    super(plugin);
+  public KukulkanUiModule(final AbstractUIPlugin arg0) {
+    super(arg0);
   }
 }

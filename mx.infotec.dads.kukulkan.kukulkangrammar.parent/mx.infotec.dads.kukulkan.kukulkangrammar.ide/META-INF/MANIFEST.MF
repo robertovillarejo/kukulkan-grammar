@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: mx.infotec.dads.kukulkan.kukulkangrammar.ide
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: mx.infotec.dads.kukulkan.kukulkangrammar.ide; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: mx.infotec.dads.kukulkan.kukulkangrammar,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide,
+ org.antlr.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: mx.infotec.dads.kukulkan.kukulkangrammar.ide.contentassist.antlr,
+ mx.infotec.dads.kukulkan.kukulkangrammar.ide.contentassist.antlr.internal
+

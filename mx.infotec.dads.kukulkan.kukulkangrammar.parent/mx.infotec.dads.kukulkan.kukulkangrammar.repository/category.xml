@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+	<feature id="mx.infotec.dads.kukulkan.kukulkangrammar.feature" version="0.0.0">
+		<category name="main"/>
+	</feature>
+	<feature id="mx.infotec.dads.kukulkan.kukulkangrammar.feature.source" version="0.0.0">
+		<category name="main.source"/>
+	</feature>
+	<category-def name="main" label="Kukulkan"/>
+	<category-def name="main.source" label="Kukulkan (Sources)"/>
+</site>

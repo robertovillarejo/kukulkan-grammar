@@ -26,6 +26,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Kukulkan.ecore#//associationField/toSourcePropertyName"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Kukulkan.ecore#//associationField/targetEntity"/>
     </genClasses>
+    <genClasses ecoreClass="Kukulkan.ecore#//coreEntityAssociationField">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Kukulkan.ecore#//coreEntityAssociationField/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Kukulkan.ecore#//coreEntityAssociationField/targetEntity"/>
+    </genClasses>
     <genClasses ecoreClass="Kukulkan.ecore#//stringFieldType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Kukulkan.ecore#//stringFieldType/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Kukulkan.ecore#//stringFieldType/constraints"/>

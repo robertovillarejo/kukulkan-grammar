@@ -20,13 +20,14 @@ entity:
 	(fields+=entityField
 	(COMMA fields+=entityField)*)? RBRACE)?;
 
-/** 
+	/** 
  * Entity Field Rule
  *  
  */
 entityField:
 	primitiveField
-	| associationField;
+	| associationField
+	| coreEntityAssociationField;
 
 primitiveField:
 	id=ID SEMICOLON type=fieldType;
@@ -47,6 +48,13 @@ fieldType:
  */
 associationField:
 	type=cardinality (LPAREN toSourcePropertyName=ID RPAREN)? id=ID SEMICOLON targetEntity=[entity];
+
+	/** 
+ * Core Entity Association Rule
+ *  
+ */
+coreEntityAssociationField:
+	type=userCardinality id=ID SEMICOLON targetEntity=coreEntity;
 
 	/** 
  * String Field Type Rule
@@ -151,9 +159,17 @@ minValidator:
 maxValidator:
 	MAX LPAREN INT RPAREN;
 
+coreEntity:
+	CORE_USER;
+
 cardinality:
 	ONE_TO_MANY
 	| MANY_TO_ONE
+	| ONE_TO_ONE
+	| MANY_TO_MANY;
+
+userCardinality:
+	MANY_TO_ONE
 	| ONE_TO_ONE
 	| MANY_TO_MANY;
 
@@ -266,6 +282,9 @@ terminal ONE_TO_ONE:
 
 terminal MANY_TO_MANY:
 	'ManyToMany';
+
+terminal CORE_USER:
+	'CoreUser';
 
 terminal PATTERN_VALUE:
 	'"' .* '"';
